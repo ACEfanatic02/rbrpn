@@ -4,16 +4,20 @@ class RPNCalc
     @stack = []
   end
 
-  def push(value)
+  def push value
     @stack.push(value)
   end
 
   def add
-    pop_stack + pop_stack
+    a = @stack.pop || 0
+    b = @stack.pop || 0
+    a + b
   end
 
   def subtract
-    pop_stack - pop_stack
+    a = @stack.pop || 0
+    b = @stack.pop || 0
+    a - b
   end
 
   def multiply
@@ -34,11 +38,4 @@ class RPNCalc
     b = @stack.pop || 1
     a / b
   end
-
-  private
-
-    def pop_stack
-      @stack.pop || 0
-    end
-
 end
