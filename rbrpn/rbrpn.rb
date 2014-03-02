@@ -9,9 +9,17 @@ class RPNCalc
   end
 
   def add
-    a = @stack.pop || 0
-    b = @stack.pop || 0
-    a + b
+    pop_stack + pop_stack
   end
+
+  def subtract
+    pop_stack - pop_stack
+  end
+
+  private
+
+    def pop_stack
+      @stack.pop || 0
+    end
 
 end
