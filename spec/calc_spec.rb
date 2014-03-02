@@ -1,4 +1,4 @@
-require 'rbrpn/rbrpn'
+require 'rbrpn/calc'
 
 describe RPNCalc do
   
