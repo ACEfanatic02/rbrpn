@@ -1,4 +1,4 @@
-require_relative '../rbrpn/rbrpn.rb'
+require 'rbrpn/rbrpn'
 
 describe RPNCalc do
   
