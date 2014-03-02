@@ -18,6 +18,14 @@ describe RPNCalc do
       calc.push 5
       calc.add.should eq 5
     end
+    it 'pushes result to stack' do
+      calc = RPNCalc.new
+      calc.push 5
+      calc.push 4
+      calc.add.should eq 9
+      calc.push 1
+      calc.add.should eq 10
+    end
   end
 
   describe '#subtract' do
@@ -35,6 +43,14 @@ describe RPNCalc do
       calc = RPNCalc.new
       calc.push 5
       calc.subtract.should eq 5
+    end
+    it 'pushes result to stack' do
+      calc = RPNCalc.new
+      calc.push 5
+      calc.push 4
+      calc.subtract.should eq -1
+      calc.push 1
+      calc.add.should eq 0
     end
   end
 
@@ -54,6 +70,14 @@ describe RPNCalc do
       calc.push 5
       calc.multiply.should eq 5
     end
+    it 'pushes result to stack' do
+      calc = RPNCalc.new
+      calc.push 5
+      calc.push 4
+      calc.multiply.should eq 20
+      calc.push 2
+      calc.multiply.should eq 40
+    end
   end
 
   describe '#divide' do
@@ -71,6 +95,14 @@ describe RPNCalc do
       calc = RPNCalc.new
       calc.push 5
       calc.divide.should eq 5
+    end
+    it 'returns the quotient of top argument on stack' do
+      calc = RPNCalc.new
+      calc.push 2
+      calc.push 4
+      calc.divide.should eq 2
+      calc.push 1
+      calc.add.should eq 3
     end
   end
 end
