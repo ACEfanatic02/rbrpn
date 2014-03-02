@@ -23,7 +23,6 @@ class RPNCalc
   def multiply
     a = @stack.pop || 0
     b = @stack.pop || 1
-
     a * b
   end
 
