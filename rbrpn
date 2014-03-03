@@ -1,42 +1,17 @@
 #!/usr/bin/env ruby
 
 require_relative 'lib/rbrpn/calc'
-
-def tokens line
-  line.strip!
-  line.split
-end
-
-def operator? token
-  token.match /[+\-*\/]/
-end
-
-def quit? token
-  token.match /qQ|[qQ]uit/
-end
+require_relative 'lib/rbrpn/parser'
 
 calc = RPNCalc.new
+parser = RPNParser.new calc
 
 ARGF.lines do |line|
-
-  tokens(line).each do |token|
-    if quit? token
-      # ?
-    end
-
-    if operator? token
-      case token
-      when "+"
-        puts calc.add
-      when "-"
-        puts calc.subtract
-      when "*"
-        puts calc.multiply
-      when "/"
-        puts calc.divide
-      end
-    else
-      calc.push token.to_f
-    end
+  
+  if line =~ /[qQ]/ 
+    break
   end
+
+  result = parser.parse line
+  puts result if result
 end
