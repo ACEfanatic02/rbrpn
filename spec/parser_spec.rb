@@ -16,5 +16,10 @@ describe RPNParser do
       parser = RPNParser.new calc
       parser.parse("5 4 +").should eq 9
     end
+    it 'returns nil for pushing operands' do
+      calc = RPNCalc.new
+      parser = RPNParser.new calc
+      parser.parse("5 4").should be_nil
+    end
   end
 end
