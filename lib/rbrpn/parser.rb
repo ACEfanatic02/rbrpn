@@ -5,8 +5,23 @@ class RPNParser
   end
 
   def parse line
+    result = 0
     line.split.each do |token|
-      @calc.push token.to_f
+      if token =~ /[0-9]+[.]?[0-9]*/
+        @calc.push token.to_f
+      elsif token =~ /[-+*\/]/
+        case token
+        when "+"
+          result = @calc.add
+        when "-"
+          result = @calc.subtract
+        when "*"
+          result = @calc.multiply
+        when "/"
+          result = @calc.divide
+        end
+      end
     end
+    result
   end
 end
