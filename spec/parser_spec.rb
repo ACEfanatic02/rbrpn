@@ -21,5 +21,10 @@ describe RPNParser do
       parser = RPNParser.new calc
       parser.parse("5 4").should be_nil
     end
+    it 'correctly handles multiple operators' do
+      calc = RPNCalc.new
+      parser = RPNParser.new calc
+      parser.parse("5 5 4 + +").should eq 14
+    end
   end
 end
