@@ -26,5 +26,18 @@ describe RPNParser do
       parser = RPNParser.new calc
       parser.parse("5 5 4 + +").should eq 14
     end
+    it 'ignores invalid tokens' do
+      calc = RPNCalc.new
+      parser = RPNParser.new calc
+      parser.parse("5 4 foo+").should be_nil
+      parser.parse("6bar +").should eq 9
+    end
+    it 'correctly handles multiline operations' do
+      calc = RPNCalc.new
+      parser = RPNParser.new calc
+      parser.parse("5 4")
+      parser.parse("6")
+      parser.parse("+ *").should eq 50
+    end
   end
 end
